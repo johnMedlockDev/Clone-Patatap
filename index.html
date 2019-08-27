@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css\main.css" />
     <script src="js\lib\paper-full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.core.min.js"></script>
+    <script src="js\data.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
       var circles = [];
 
@@ -16,7 +17,8 @@
           var maxPoint = new Point(view.size.width, view.size.height);
           var randomPoint = Point.random();
           var point = maxPoint * randomPoint;
-          var newCircle = new Path.Circle(point, 500)
+          var newCircle = new Path.Circle(point, 500);
+
           newCircle.fillColor = keyData[event.key].color;
           keyData[event.key].sound.play();
           circles.push(newCircle);
@@ -30,7 +32,6 @@
           if(circles[i].area < 1){
             circles[i].remove();
             circles.splice(i, 1);
-            console.log(circles);
           }
         }
       }
@@ -38,6 +39,5 @@
   </head>
   <body>
     <canvas id="myCanvas" resize></canvas>
-    <script src="js\data.js"></script>
   </body>
 </html>
